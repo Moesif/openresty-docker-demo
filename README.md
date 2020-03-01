@@ -12,7 +12,7 @@ After signing up for a Moesif account, your Moesif Application Id will be displa
 
 You can always find your Moesif Application Id at any time by logging 
 into the [_Moesif Portal_](https://www.moesif.com/), click on the top right menu,
-and then clicking _Installation_.
+and then clicking _API Keys_.
 
 2. Start the docker-container using `docker-compose up -d`
 
@@ -24,6 +24,6 @@ curl -X POST -H "Content-Type: application/json" -H "userId: nginxapiuser" -H "X
 
 4. The data should be captured in the corresponding Moesif account.
 
-Congratulations! If everything was done corectly, Moesif should now be tracking all network requests that match the route you specified earlier. If you have any issues with set up, please reach out to support@moesif.com.
+Congratulations! If everything was done correctly, Moesif should now be tracking all network requests that match the route you specified earlier. If you have any issues with set up, please reach out to support@moesif.com.
 
 Please note: If you're using `OpenResty` and `luarocks`, please refer to this [example](https://github.com/Moesif/moesif-openresty-example) on how to install Moesif plugin using `luarocks`.
