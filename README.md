@@ -27,7 +27,7 @@ docker build --no-cache -t lua-resty-moesif-example ./
 By default, The container is listening on port 8000. You should now be able to make a request: 
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"name":"moesif"}' "http://localhost:8000/api/api?x=2&y=4"
+curl -X POST -H "Content-Type: application/json" -d '{"name":"moesif"}' "http://localhos:8000/api/api?x=2&y=4" -H 'User-Id:123'   -H "Company-Id:567"
 ```
 
 4. The data should be captured in the corresponding Moesif account.
