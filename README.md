@@ -1,11 +1,11 @@
-## Lua Resty Moesif Example
+## OpenResty with Moesif API Logging Example
 
-[Moesif](https://www.moesif.com) is an API analyatics platform. [Moesif OpenResty plugin](https://github.com/Moesif/lua-resty-moesif) is a plugin that makes integration with Moesif easy for OpenResty based applications.
+Example Docker application using [Moesif OpenResty plugin](https://github.com/Moesif/lua-resty-moesif) to log API calls to [Moesif API analytics](https://www.moesif.com)
 
-This is an example of [OpenResty](https://openresty.org/en/) with Moesif integrated. To learn more about configuration options, please refer to [Moesif OpenResty plugin](https://github.com/Moesif/lua-resty-moesif).
+To learn more about configuration options, please refer to [Moesif OpenResty plugin](https://github.com/Moesif/lua-resty-moesif).
 
 ## How to run this example
-1. Be sure to edit the nginx.conf.d/main.conf to change the `application_id` to your application id obtained from Moesif.
+1. Clone this repo and edit the `nginx.conf.d/main.conf` file to set your actual Moesif Application Id.
 
 Your Moesif Application Id can be found in the [_Moesif Portal_](https://www.moesif.com/).
 After signing up for a Moesif account, your Moesif Application Id will be displayed during the onboarding steps. 
@@ -14,12 +14,20 @@ You can always find your Moesif Application Id at any time by logging
 into the [_Moesif Portal_](https://www.moesif.com/), click on the top right menu,
 and then clicking _API Keys_.
 
-2. Start the docker-container using `docker-compose up -d`
+2. Build the docker image
+```bash
+docker build --no-cache -t lua-resty-moesif-example ./
+```
 
-3. Send the request to the route based on the nginx configuration. 
+3. Start the docker container:
+```bash
+`docker-compose up -d`
+```
+
+By default, The container is listening on port 8000. You should now be able to make a request: 
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -H "userId: nginxapiuser" -H "X-Forwarded-For: 148.64.111.29:15, 148.64.111.227" -H "X-Moesif-Transaction-Id: 08367f9d-161d-4954-afb8-4d02f03517e3" -d '{"name":"moesif"}' "http://localhost:9000/api/test?x=2&y=4"
+curl -X POST -H "Content-Type: application/json" -d '{"name":"moesif"}' "http://localhos:8000/api/api?x=2&y=4" -H 'User-Id:123'   -H "Company-Id:567"
 ```
 
 4. The data should be captured in the corresponding Moesif account.

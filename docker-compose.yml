@@ -1,10 +1,10 @@
 version: '2'
 services:
   nginx:
-    #image: openresty/openresty
+    image: lua-resty-moesif-example
     build: .
     ports:
-      - "9000:80"
+      - "8000:80"
     volumes:
       - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
       - ./nginx.conf.d/:/usr/local/openresty/nginx/conf/conf.d/
