@@ -27,11 +27,9 @@ docker-compose up -d
 By default, The container is listening on port 8000. You should now be able to make a request: 
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"name":"moesif"}' "http://localhost:8000/api/api?x=2&y=4" -H 'User-Id:123' -H "Company-Id:567"
+curl -X POST -H "Content-Type: application/json" -d '{"name":"moesif"}' "http://localhost:8000/api?x=2&y=4" -H 'User-Id:123' -H "Company-Id:567"
 ```
 
 4. The data should be captured in the corresponding Moesif account.
 
 Congratulations! If everything was done correctly, Moesif should now be tracking all network requests that match the route you specified earlier. If you have any issues with set up, please reach out to support@moesif.com.
-
-Please note: If you're using `OpenResty` and `luarocks`, please refer to this [example](https://github.com/Moesif/moesif-openresty-example) on how to install Moesif plugin using `luarocks`.
