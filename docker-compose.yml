@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: lua-resty-moesif-example
+    image: openresty-docker-demo
     build: .
     ports:
       - "8000:80"
