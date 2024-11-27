@@ -9,3 +9,6 @@ services:
       - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
       - ./nginx.conf.d/:/usr/local/openresty/nginx/conf/conf.d/
       - ./lua:/usr/local/openresty/nginx/lua
+    environment:
+      - MOESIF_APPLICATION_ID=SET_ME
+      - JWT_SECRET=SET_ME
