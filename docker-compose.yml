@@ -4,11 +4,41 @@ services:
     image: openresty-docker-demo
     build: .
     ports:
-      - "8000:80"
+      - 8000:80
     volumes:
       - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
       - ./nginx.conf.d/:/usr/local/openresty/nginx/conf/conf.d/
       - ./lua:/usr/local/openresty/nginx/lua
     environment:
-      - MOESIF_APPLICATION_ID=SET_ME
-      - JWT_SECRET=SET_ME
+      - MOESIF_APPLICATION_ID=
+      - JWT_SECRET=
+
+  dev-portal:
+    image: moesif/dev-portal
+    ports:
+      - 4000:4000
+    environment:
+      - HOST=127.0.0.1
+      - PORT=4000
+      - REACT_APP_DEV_PORTAL_API_SERVER=http://dev-portal-api:3030
+      - REACT_APP_AUTH_PROVIDER=Auth0
+      - REACT_APP_AUTH0_DOMAIN=
+      - REACT_APP_AUTH0_CLIENT_ID=
+      - REACT_APP_STRIPE_PUBLISHABLE_KEY=
+      - REACT_APP_STRIPE_MANAGEMENT_URL=
+
+  dev-portal-api:
+    image: moesif/dev-portal-api
+    ports:
+      - 3030:3030
+    environment:
+      - FRONT_END_DOMAIN=127.0.0.1:4000
+      - MOESIF_APPLICATION_ID=
+      - MOESIF_MANAGEMENT_TOKEN=
+      - MOESIF_TEMPLATE_WORKSPACE_ID_LIVE_EVENT_LOG=
+      - MOESIF_TEMPLATE_WORKSPACE_ID_TIME_SERIES=
+      - STRIPE_API_KEY=
+      - APIM_PROVIDER=JWT
+      - JWT_SECRET=
+      - JWT_EXPIRES_IN=
+
