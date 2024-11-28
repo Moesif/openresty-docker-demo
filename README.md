@@ -16,7 +16,7 @@ and then clicking _API Keys_.
 
 2. Build the docker image
 ```bash
-docker build --no-cache -t openresty-docker-demo ./
+docker buildx build --platform linux/amd64 -t openresty-docker-demo ./
 ```
 
 3. Start the docker container:
